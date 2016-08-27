@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+
+	<meta title="Ludum Dare #36" package="ru.miriti.ld36" version="1.0.0" company="Company Name" />
+	<app main="Main" path="Export" file="Ld36" />
+
+	<source path="Source" />
+
+	<haxelib name="openfl" />
+	<haxelib name="nape" />
+
+	<assets path="Assets" rename="assets" />
+
+	<window width="900" height="600" background="#c5e4e4" fps="60" vsync="true" resizable="false" />
+
+</project>
