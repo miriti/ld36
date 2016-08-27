@@ -7,39 +7,43 @@ import openfl.display.Bitmap;
 import openfl.Assets;
 
 import nape.geom.Vec2;
+import nape.phys.Body;
 import nape.phys.BodyType;
 import nape.constraint.PivotJoint;
 import nape.shape.Polygon;
 import nape.shape.Circle;
+import nape.constraint.PivotJoint;
+
+import anim.Caveman;
 
 class Troop extends PhysicsObject {
-  static var bitmapData:BitmapData;
-
   var aim:Vec2 = new Vec2();
   var throwArrow:ThrowArrow;
+  var animation:Caveman;
 
   public function new() {
     super(BodyType.DYNAMIC);
 
-    var bitmap = new Bitmap(Assets.getBitmapData('assets/troop.png'));
-    bitmap.x = -bitmap.width / 2;
-    bitmap.y = -bitmap.height / 2;
-    addChild(bitmap);
+    animation = new Caveman();
+
+    addChild(animation);
 
     throwArrow = new ThrowArrow();
     throwArrow.visible = false;
     addChild(throwArrow);
 
-    var box = new Polygon(Polygon.box(bitmap.width, bitmap.height));
-    //box.material.dynamicFriction = 0;
-    //box.translate(Vec2.get(0, -bitmap.width/2));
+    body.shapes.add(new Polygon(Polygon.box(30, 70)));
 
-    var circle = new Circle(bitmap.width/2);
-    circle.translate(Vec2.get(0, bitmap.height-bitmap.width-bitmap.width/2));
-    circle.material.rollingFriction = 0;
+    var legs = new Circle(15);
+    legs.translate(Vec2.get(0, 35));
+    body.shapes.add(legs);
 
-    body.shapes.add(box);
-    //body.shapes.add(circle);
+    var head = new Circle(15);
+    head.translate(Vec2.get(0, -35));
+    body.shapes.add(head);
+
+    body.allowRotation = false;
+    body.mass = 50;
 
     var input = GameInput.getInstance();
 
@@ -56,7 +60,7 @@ class Troop extends PhysicsObject {
     var trb = new ThrowableItem();
     trb.space = body.space;
     trb.position = Vec2.get(x+aim.x*100, y+aim.y*100);
-    trb.throwItem(aim, 400);
+    trb.throwItem(aim, 800);
 
     parent.addChild(trb);
   }
@@ -66,20 +70,34 @@ class Troop extends PhysicsObject {
 
     if(input.isLeft()) {
       body.velocity.x = -200;
+      animation.scaleX = -1;
+      animation.animated = true;
+    } else {
+      if(!input.isRight()) {
+        body.angularVel = 0;
+        animation.animated = false;
+      }
     }
 
     if(input.isRight()) {
       body.velocity.x = 200;
+      animation.scaleX = 1;
+      animation.animated = true;
+    } else {
+      if(!input.isLeft()) {
+        body.angularVel = 0;
+        animation.animated = false;
+      }
     }
 
     var bounds = getBounds(Main.getInstance());
 
-    var globalPos:Vec2 = Vec2.get(bounds.x + bounds.width/2, bounds.y + bounds.height/2);
+    var globalPos:Vec2 = Vec2.get(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2);
 
     aim.setxy(stage.mouseX - globalPos.x, stage.mouseY - globalPos.y);
     aim.normalise();
 
-    throwArrow.rotation = aim.angle * (180/Math.PI);
+    throwArrow.rotation = aim.angle * (180 / Math.PI);
 
     super.update(delta);
   }

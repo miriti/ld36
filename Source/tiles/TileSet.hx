@@ -7,7 +7,7 @@ import openfl.geom.Point;
 import openfl.display.BitmapData;
 import openfl.Assets;
 
-class TileMap {
+class TileSet {
 
   public var firstgid:Int;
   public var name:String;
@@ -44,13 +44,12 @@ class TileMap {
 
     for(tile in xmlData.nodes.tile) {
       var tileID = Std.parseInt(tile.att.id);
-
-      for(property in tile.node.properties.nodes.property ) {
-        tileData[tileID].properties[property.att.name] = property.att.value;
+      if(tile.hasNode.properties) {
+        for(property in tile.node.properties.nodes.property ) {
+          tileData[tileID].properties[property.att.name] = property.att.value;
+        }
       }
     }
-
-    trace( tileData );
   }
 
   public function getTile(gid:Int):Tile {

@@ -19,7 +19,6 @@ class GameWorld extends GameObject {
 
     gameMap = new GameMap();
     gameMap.load(space);
-    gameMap.generate(space);
     addChild(gameMap);
   }
 

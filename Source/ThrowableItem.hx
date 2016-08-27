@@ -24,12 +24,15 @@ class ThrowableItem extends PhysicsObject {
 
     addChild(bitmap);
 
-    body.shapes.add(new Circle(Math.min(bitmap.width, bitmap.height) / 2));
-
+    var shape = new Circle(Math.min(bitmap.width, bitmap.height) / 2);
+    shape.material.elasticity = 0.5;
+    body.shapes.add(shape);
+    body.mass = 1;
   }
 
   public function throwItem(aim:Vec2, power:Float) {
     body.velocity = aim.muleq(power);
+    body.angularVel = 20;
   }
 
 }
