@@ -15,6 +15,8 @@ class InventoryItem  {
         return new BasicToolItem();
       case 'spear':
         return new SpearItem();
+      case 'rock':
+        return new RockItem();
       }
 
     return null;

@@ -27,7 +27,10 @@ class ThrowEquipment extends Equipment {
     var p:PhysicsObject = generateProjectile();
 
     if (p != null) {
-      // throw
+      p.body.velocity = aim.mul(arrow.power * 10);
+      p.space = mob.space;
+      p.position = mob.position.add(aim.normalise().mul(50));
+      mob.parent.addChild(p);
     }
 
     if(display != null) {

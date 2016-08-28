@@ -8,7 +8,7 @@ import nape.geom.Vec2;
 import nape.phys.BodyType;
 import nape.shape.Circle;
 
-class ThrowableItem extends PhysicsObject {
+class ThrowableRock extends PhysicsObject {
   private static var bitmapData:BitmapData = null;
 
   public function new() {
