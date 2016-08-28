@@ -27,10 +27,10 @@ class Caveman extends GameObject {
   public function new() {
     super();
 
-    leg_b = new Bitmap(Assets.getBitmapData('assets/troop/leg-b.png'));
-    leg_a = new Bitmap(Assets.getBitmapData('assets/troop/leg-a.png'));
-    wear = new Bitmap(Assets.getBitmapData('assets/troop/wear.png'));
-    head = new Bitmap(Assets.getBitmapData('assets/troop/head.png'));
+    leg_b = new Bitmap(Assets.getBitmapData('assets/caveman/leg-b.png'));
+    leg_a = new Bitmap(Assets.getBitmapData('assets/caveman/leg-a.png'));
+    wear = new Bitmap(Assets.getBitmapData('assets/caveman/wear.png'));
+    head = new Bitmap(Assets.getBitmapData('assets/caveman/head.png'));
 
     wear.x = -wear.width / 2;
     wear.y = -wear.height / 2;
@@ -49,14 +49,14 @@ class Caveman extends GameObject {
   }
 
   override public function update(delta:Float) : Void {
-    super.update(delta);
-
     if(animated) {
       leg_a.y = legs_origin_y + Math.sin(phase) * 10;
       leg_b.y = legs_origin_y - Math.sin(phase) * 10;
 
       phase += Math.PI * 10 * delta;
     }
+
+    super.update(delta);
   }
 
 }

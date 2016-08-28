@@ -14,6 +14,11 @@ import nape.phys.BodyType;
 import tiles.TileSet;
 import tiles.Tile;
 
+import mobs.Player;
+
+import interactive.Tree;
+import interactive.Rocks;
+
 class GameMap extends Sprite  {
   var tiles:Array<Array<Tile>>;
 
@@ -34,8 +39,8 @@ class GameMap extends Sprite  {
       for(tile in layer.node.data.nodes.tile) {
         var tile = tileMap.getTile(Std.parseInt(tile.att.gid));
         if(tile != null) {
-          tile.position = Vec2.get(tileX * 30, tileY * 30);
-          tile.space = space;
+          tile.x = tileX * 30;
+          tile.y = tileY * 30;
           addChild(tile);
         }
 
@@ -49,19 +54,90 @@ class GameMap extends Sprite  {
     }
 
     for(object in fast.node.objectgroup.nodes.object) {
+      var b_x:Int = 0;
+      var b_y:Int = 0;
+      var b_width:Int = 0;
+      var b_height:Int = 0;
+
+      if((object.has.x) && (object.has.y)) {
+        b_x = Std.parseInt(object.att.x);
+        b_y = Std.parseInt(object.att.y);
+      }
+
+      if((object.has.width) && (object.has.height)) {
+        b_width = Std.parseInt(object.att.width);
+        b_height = Std.parseInt(object.att.height);
+      }
+
       if( object.att.type == 'player' ) {
-        var troop:Troop = new Troop();
-        troop.space = space;
-        troop.position = Vec2.get(Std.parseInt(object.att.x), Std.parseInt(object.att.y));
-        addChild(troop);
+        var player:Player = new Player();
+        player.space = space;
+        player.position = Vec2.get(Std.parseInt(object.att.x), Std.parseInt(object.att.y));
+        addChild(player);
+
+        GameMain.getInstance().following = player;
       }
 
       if( object.att.type == 'collision' ) {
         var collisionBody:Body = new Body(BodyType.STATIC);
 
-        var shape:Polygon = new Polygon(Polygon.rect(0, 0, Std.parseInt(object.att.width), Std.parseInt(object.att.height)));
+        if((object.has.width) && (object.has.height)) {
+
+          var shape:Polygon = new Polygon(Polygon.box(b_width, b_height));
           collisionBody.shapes.add(shape);
-          collisionBody.position = Vec2.get(Std.parseInt(object.att.x) + Std.parseInt(object.att.width) / 2, Std.parseInt(object.att.y) + Std.parseInt(object.att.height) / 2);
+          collisionBody.position = Vec2.get(b_x + b_width / 2, b_y + b_height / 2);
+        }
+
+        if(object.hasNode.polygon) {
+          var points_strs:Array<String> = object.node.polygon.att.points.split(" ");
+          var polygon_points:Array<Vec2> = new Array<Vec2>();
+
+          for(ps in points_strs) {
+            var s:Array<String> = ps.split(",");
+            var v:Vec2 = Vec2.get(Std.parseInt(s[0]), Std.parseInt(s[1]));
+            polygon_points.push(v);
+          }
+
+          var shape:Polygon = new Polygon(polygon_points);
+          collisionBody.shapes.add(shape);
+          collisionBody.position = Vec2.get(b_x, b_y);
+        }
+
+        collisionBody.space = space;
+      }
+
+      if( object.att.type == 'water' ) {
+        trace( "water?" );
+      }
+
+      if( object.att.type == 'tree' ) {
+        var woodCount:Int = 4;
+        if(object.hasNode.properties) {
+          for(prop in object.node.properties.nodes.property) {
+            if(prop.att.name == 'wood_count') {
+              woodCount = Std.parseInt(prop.att.value);
+            }
+          }
+        }
+
+        var tree:Tree = new Tree(b_x, b_y, b_width, b_height, woodCount);
+        tree.space = space;
+        addChild(tree);
+      }
+
+      if( object.att.type == 'rocks' ) {
+        /*var woodCount:Int = 4;
+        if(object.hasNode.properties) {
+          for(prop in object.node.properties.nodes.property) {
+            if(prop.att.name == 'wood_count') {
+              woodCount = Std.parseInt(prop.att.value);
+            }
+          }
+        }*/
+
+        var rocks:Rocks = new Rocks(b_x, b_y, b_width, b_height);
+        rocks.space = space;
+        addChild(rocks);
       }
     }
   }

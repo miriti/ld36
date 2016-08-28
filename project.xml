@@ -8,6 +8,7 @@
 
 	<haxelib name="openfl" />
 	<haxelib name="nape" />
+	<haxelib name="actuate" />
 
 	<assets path="Assets" rename="assets" />
 

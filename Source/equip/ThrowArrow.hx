@@ -1,4 +1,4 @@
-package ;
+package equip;
 
 import openfl.display.Sprite;
 import openfl.display.BitmapData;

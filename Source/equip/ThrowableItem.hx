@@ -1,4 +1,4 @@
-package ;
+package equip;
 
 import openfl.display.BitmapData;
 import openfl.display.Bitmap;

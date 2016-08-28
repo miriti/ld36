@@ -9,6 +9,7 @@ class PhysicsObject extends GameObject  {
   public var space(default, set):Space;
   public var body:Body;
   public var position(get, set):Vec2;
+  public var enabled:Bool = true;
 
   public function get_position():Vec2 {
     return body.position;
@@ -20,7 +21,11 @@ class PhysicsObject extends GameObject  {
   }
 
   public function set_space(new_space: Space):Space {
-    return this.body.space = new_space;
+    if(enabled) {
+      return space = this.body.space = new_space;
+    }
+
+    return space = new_space;
   }
 
   /**
@@ -32,9 +37,16 @@ class PhysicsObject extends GameObject  {
   }
 
   override function update(delta:Float) {
-    this.x = body.position.x;
-    this.y = body.position.y;
-    this.rotation = (180 / Math.PI) * body.rotation;
+    if(enabled) {
+      if(body.allowMovement) {
+        this.x = body.position.x;
+        this.y = body.position.y;
+      }
+
+      if(body.allowRotation) {
+        this.rotation = (180 / Math.PI) * body.rotation;
+      }
+    }
   }
 
 }

@@ -4,10 +4,16 @@ import openfl.display.Stage;
 import openfl.events.EventDispatcher;
 import openfl.events.KeyboardEvent;
 import openfl.events.MouseEvent;
+import openfl.Lib;
 
 class GameInput extends EventDispatcher {
 
   private static var _instance:GameInput = null;
+
+  public static inline var KEY_A = 37;
+  public static inline var KEY_LEFT = 65;
+  public static inline var KEY_D = 39;
+  public static inline var KEY_RIGHT = 68;
 
   private var keys:Array<Bool> = new Array<Bool>();
   private var mouseDown: Bool = false;
@@ -32,10 +38,18 @@ class GameInput extends EventDispatcher {
   }
 
   private function onKeyDown(e: KeyboardEvent): Void {
+    if(!keys[e.keyCode]) {
+      dispatchEvent(e);
+    }
+
     keys[e.keyCode] = true;
   }
 
   private function onKeyUp(e: KeyboardEvent): Void {
+    if(keys[e.keyCode]) {
+      dispatchEvent(e);
+    }
+
     keys[e.keyCode] = false;
   }
 
@@ -56,11 +70,11 @@ class GameInput extends EventDispatcher {
   }
 
   public function isLeft() : Bool {
-    return keys[37] || keys[65];
+    return keys[KEY_A] || keys[KEY_LEFT];
   }
 
   public function isRight() : Bool {
-    return keys[39] || keys[68];
+    return keys[KEY_D] || keys[KEY_RIGHT];
   }
 
 }
