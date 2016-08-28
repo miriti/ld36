@@ -14,6 +14,10 @@ class GameInput extends EventDispatcher {
   public static inline var KEY_LEFT = 65;
   public static inline var KEY_D = 39;
   public static inline var KEY_RIGHT = 68;
+  public static inline var KEY_SPACE = 32;
+  public static inline var KEY_W = 87;
+  public static inline var KEY_UP = 38;
+
 
   private var keys:Array<Bool> = new Array<Bool>();
   private var mouseDown: Bool = false;

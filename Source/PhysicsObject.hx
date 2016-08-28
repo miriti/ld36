@@ -1,5 +1,7 @@
 package ;
 
+import openfl.events.Event;
+
 import nape.space.Space;
 import nape.phys.Body;
 import nape.phys.BodyType;

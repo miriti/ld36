@@ -12,8 +12,6 @@ class BasicTool extends Equipment  {
   var bitmap:Bitmap;
   var container:Sprite;
 
-  private var _action:Bool = false;
-
   public function new() {
     super();
 
@@ -35,12 +33,14 @@ class BasicTool extends Equipment  {
     Actuate.tween(container, 0.1, {rotation: -60}).onComplete(function() {
       Actuate.tween(container, 0.1, {rotation: 140}).onComplete(function() {
         if(Interactive.current != null) {
-          if(Math.abs(Interactive.current.x - mob.x) <= 100) {
+          var bounds = Interactive.current.getBounds(mob.parent);
+
+          if(Math.min(Math.abs(bounds.x - mob.x), Math.abs((bounds.x+bounds.width) - mob.x)) <= 100) {
             Interactive.current.hit(this);
           }
         }
         Actuate.tween(container, 0.1, {rotation: 0}).onComplete(function() {
-          if(_action) {
+          if(inAction) {
             animate();
           }
           });
@@ -49,13 +49,8 @@ class BasicTool extends Equipment  {
   }
 
   override public function beginAction() : Void {
-    _action = true;
-
+    super.beginAction();
     animate();
-  }
-
-  override public function endAction(): Void {
-    _action = false;
   }
 
 }

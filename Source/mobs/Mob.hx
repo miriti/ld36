@@ -1,6 +1,7 @@
 package mobs;
 
 import openfl.events.MouseEvent;
+import openfl.events.Event;
 import openfl.geom.Point;
 import openfl.display.BitmapData;
 import openfl.display.Bitmap;
@@ -17,6 +18,9 @@ import nape.callbacks.CbEvent;
 import nape.callbacks.CbType;
 import nape.callbacks.BodyListener;
 import nape.callbacks.BodyCallback;
+import nape.callbacks.InteractionCallback;
+import nape.callbacks.InteractionListener;
+import nape.callbacks.InteractionType;
 
 import anim.Caveman;
 
@@ -25,58 +29,15 @@ import equip.Equipment;
 class Mob extends PhysicsObject {
   var moveLeft(default, set):Bool;
   var moveRight(default, set):Bool;
-  var equipment(default, set):Equipment = null;
+  var inJump:Bool = false;
+  var cbType:CbType;
 
   var aim:Vec2 = new Vec2();
   var animation:Caveman;
 
-  public function look(side:Int) {
-    animation.scaleX = side;
-
-    if((equipment != null) && (equipment.display != null)) {
-      equipment.display.scaleX = side;
-    }
-  }
-
-  public function set_moveLeft(value:Bool):Bool {
-    if ((value) && (!moveLeft)) {
-      animation.animated = true;
-      look(-1);
-    } else {
-      animation.animated = false;
-    }
-
-    return moveLeft = value;
-  }
-
-  public function set_moveRight(value:Bool):Bool {
-    if ((value) && (!moveRight)) {
-      animation.animated = true;
-      look(1);
-    } else {
-      animation.animated = false;
-    }
-
-    return moveRight = value;
-  }
-
-  public function set_equipment(value:Equipment):Equipment {
-    if(equipment != null)  {
-      equipment.mob = null;
-
-      if(equipment.display!=null) {
-        removeChild(equipment.display);
-      }
-    }
-
-    if(value.display != null) {
-      addChild(value.display);
-    }
-
-    value.mob = this;
-
-    return equipment = value;
-  }
+  public var equipment(default, set):Equipment = null;
+  public var look(default, set):Int = 1;
+  public var interactionListener:InteractionListener;
 
   public function new() {
     super(BodyType.DYNAMIC);
@@ -86,6 +47,9 @@ class Mob extends PhysicsObject {
     addChild(animation);
 
     body.shapes.add(new Polygon(Polygon.box(30, 70)));
+
+    cbType = new CbType();
+    body.cbTypes.add(cbType);
 
     var legs = new Circle(15);
     legs.translate(Vec2.get(0, 35));
@@ -97,18 +61,87 @@ class Mob extends PhysicsObject {
 
     body.allowRotation = false;
     body.mass = 50;
+
+    interactionListener = new InteractionListener(CbEvent.BEGIN, InteractionType.COLLISION, cbType, GameCbTypes.getGround(), interactionHandler);
+  }
+
+  function set_look(value:Int):Int {
+    animation.scaleX = value;
+
+    if ((equipment != null) && (equipment.display != null)) {
+      equipment.display.scaleX = value;
+    }
+    return look = value;
+  }
+
+  function interactionHandler(cb: InteractionCallback) : Void {
+    inJump = false;
+    body.velocity.setxy(0, 0);
+  }
+
+  public function set_moveLeft(value:Bool):Bool {
+    if ((value) && (!moveLeft)) {
+      animation.animated = true;
+      look = -1;
+    } else {
+      animation.animated = false;
+    }
+
+    return moveLeft = value;
+  }
+
+  public function set_moveRight(value:Bool):Bool {
+    if ((value) && (!moveRight)) {
+      animation.animated = true;
+      look = 1;
+    } else {
+      animation.animated = false;
+    }
+
+    return moveRight = value;
+  }
+
+  public function set_equipment(value:Equipment):Equipment {
+    if (equipment != null)  {
+      equipment.mob = null;
+
+      if (equipment.display != null) {
+        removeChild(equipment.display);
+      }
+    }
+
+    if (value != null) {
+      if (value.display != null) {
+        addChild(value.display);
+      }
+
+      value.mob = this;
+    }
+
+    return equipment = value;
+  }
+
+  public function jump() : Void {
+    if (!inJump) {
+      body.velocity.y = -300;
+      inJump = true;
+    }
   }
 
   override public function update(delta: Float):Void {
-    if(moveLeft) {
+    if (equipment != null) {
+      equipment.update(delta);
+    }
+
+    if (moveLeft) {
       body.velocity.x = -200;
     }
 
-    if(moveRight) {
+    if (moveRight) {
       body.velocity.x = 200;
     }
 
-    if(!moveLeft && !moveRight) {
+    if (!moveLeft && !moveRight) {
       body.velocity.x = 0;
     }
 

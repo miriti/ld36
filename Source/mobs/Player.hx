@@ -24,8 +24,6 @@ class Player extends Mob {
 
     input.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
     input.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
-    input.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
-    input.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
   }
 
   private function onKeyDown(e:KeyboardEvent): Void {
@@ -35,6 +33,10 @@ class Player extends Mob {
 
     if((e.keyCode == GameInput.KEY_RIGHT) || (e.keyCode == GameInput.KEY_D)) {
       moveRight = true;
+    }
+
+    if((e.keyCode == GameInput.KEY_UP) || (e.keyCode == GameInput.KEY_W) || (e.keyCode == GameInput.KEY_SPACE)) {
+      jump();
     }
   }
 
@@ -48,13 +50,13 @@ class Player extends Mob {
     }
   }
 
-  private function onMouseDown(e:MouseEvent): Void {
+  public function onMouseDown(): Void {
     if(equipment != null) {
       equipment.beginAction();
     }
   }
 
-  private function onMouseUp(e:MouseEvent) : Void {
+  public function onMouseUp() : Void {
     if(equipment != null) {
       equipment.endAction();
     }
@@ -63,14 +65,10 @@ class Player extends Mob {
   override public function update(delta: Float): Void {
     super.update(delta);
 
-    var bounds = getRect(GameMain.getInstance());
-    var g_x = bounds.x + bounds.width / 2;
-    var g_y = bounds.y + bounds.height / 2;
-
-    if(stage.mouseX < g_x) {
-      look(-1);
+    if(mouseX < 0) {
+      look = -1;
     } else {
-      look(1);
+      look = 1;
     }
   }
 

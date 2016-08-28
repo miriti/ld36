@@ -72,6 +72,10 @@ class GameMap extends Sprite  {
       if( object.att.type == 'player' ) {
         var player:Player = new Player();
         player.space = space;
+        space.listeners.add(player.interactionListener);
+
+        //trace( player.interactionListener, player.interactionListener.space );
+
         player.position = Vec2.get(Std.parseInt(object.att.x), Std.parseInt(object.att.y));
         addChild(player);
 
@@ -80,6 +84,7 @@ class GameMap extends Sprite  {
 
       if( object.att.type == 'collision' ) {
         var collisionBody:Body = new Body(BodyType.STATIC);
+        collisionBody.cbTypes.add(GameCbTypes.getGround());
 
         if((object.has.width) && (object.has.height)) {
 
@@ -126,15 +131,6 @@ class GameMap extends Sprite  {
       }
 
       if( object.att.type == 'rocks' ) {
-        /*var woodCount:Int = 4;
-        if(object.hasNode.properties) {
-          for(prop in object.node.properties.nodes.property) {
-            if(prop.att.name == 'wood_count') {
-              woodCount = Std.parseInt(prop.att.value);
-            }
-          }
-        }*/
-
         var rocks:Rocks = new Rocks(b_x, b_y, b_width, b_height);
         rocks.space = space;
         addChild(rocks);

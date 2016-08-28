@@ -14,6 +14,8 @@ class Wood extends Interactive {
 
     body.allowRotation = false;
     enabled = true;
+    collectable = true;
+    id = "wood";
 
     var bitmap = new Bitmap(Assets.getBitmapData('assets/wood.png'));
     bitmap.x = -bitmap.width / 2;
@@ -24,10 +26,10 @@ class Wood extends Interactive {
     body.shapes.add(new Circle(Math.min(bitmap.width, bitmap.height)/2));
   }
 
-  override public function hit(with:Equipment): Void {
+  /*override public function hit(with:Equipment): Void {
     body.space = null;
     visible = false;
     Interactive.current = null;
-  }
+  }*/
 
 }
