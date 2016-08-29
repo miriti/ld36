@@ -11,6 +11,8 @@
 	<haxelib name="actuate" />
 
 	<assets path="Assets" rename="assets" />
+	<assets path="Music" rename="music" include="*.mp3" if="flash" />
+	<assets path="Music" rename="music" include="*.ogg" unless="flash" />
 
 	<window width="900" height="600" background="#c5e4e4" fps="60" vsync="true" resizable="false" />
 
