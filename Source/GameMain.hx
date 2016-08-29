@@ -73,8 +73,6 @@ class GameMain extends GameObject {
   }
 
   override public function update(delta:Float): Void {
-    super.update(delta);
-
     if (following != null) {
       var bounds = following.getBounds(world);
 
@@ -82,6 +80,7 @@ class GameMain extends GameObject {
       world.y = (stage.stageHeight / 2) - following.y;
     }
 
+    super.update(delta);
   }
 
 }

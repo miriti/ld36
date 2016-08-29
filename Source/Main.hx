@@ -2,6 +2,8 @@ package;
 
 import openfl.display.Sprite;
 import openfl.events.Event;
+import openfl.media.Sound;
+import openfl.Assets;
 
 class Main extends Sprite {
 	static var _instance:Main;
@@ -19,14 +21,21 @@ class Main extends Sprite {
 
 		_instance = this;
 
-		/*addChild(mainMenu);*/
-		addChild(new GameMain());
+		addChild(mainMenu);
 
 		mainMenu.addEventListener('start_game', function(e:Event) {
-			removeChild(mainMenu);
+			#if flash
+			var music:Sound = Assets.getSound("music/theme.mp3");
+			#else
+			var music:Sound = Assets.getSound("music/theme.ogg");
+			#end
+
+			music.play();
 
 			gameMain = new GameMain();
 			addChild(gameMain);
+
+			mainMenu.visible = false;
 		});
 
 	}

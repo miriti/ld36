@@ -74,8 +74,6 @@ class GameMap extends Sprite  {
         player.space = space;
         space.listeners.add(player.interactionListener);
 
-        //trace( player.interactionListener, player.interactionListener.space );
-
         player.position = Vec2.get(Std.parseInt(object.att.x), Std.parseInt(object.att.y));
         addChild(player);
 

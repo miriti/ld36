@@ -1,5 +1,9 @@
 package interactive;
 
+import openfl.display.Sprite;
+import openfl.display.Bitmap;
+import openfl.Assets;
+
 import equip.Equipment;
 import nape.geom.Vec2;
 
@@ -10,11 +14,39 @@ class Tree extends Interactive {
   public function new(atx:Int, aty:Int, nwidth:Int, nheight:Int, woodCount:Int=4) {
     super();
 
+    var treeTop:Bitmap = new Bitmap(Assets.getBitmapData('assets/tree-top.png'));
+    var treeBase:Bitmap = new Bitmap(Assets.getBitmapData('assets/tree-base.png'));
+
     this.woodCount = woodCount;
 
-    graphics.beginFill(0x880000);
-    graphics.drawRect(0, 0, nwidth, nheight);
-    graphics.endFill();
+    var segments = nheight / 30;
+
+    treeTop.x = (30 - treeTop.width) / 2;
+
+    segments--;
+
+    var nextTop = 30;
+
+    while(segments > 1) {
+      var treeTrunk:Bitmap = new Bitmap(Assets.getBitmapData('assets/tree-trunk.png'));
+      treeTrunk.y = nextTop;
+      addChild(treeTrunk);
+
+      var treeBranch:Bitmap = new Bitmap(Assets.getBitmapData('assets/tree-branch.png'));
+      treeBranch.x = x + 15;
+      treeBranch.y = nextTop;
+      treeBranch.scaleX = segments%2==0 ? 1 : -1;
+      addChild(treeBranch);
+
+      nextTop += 30;
+      segments--;
+    }
+
+    addChild(treeTop);
+
+    treeBase.y = nextTop;
+    treeBase.x = (30 - treeBase.width) / 2;
+    addChild(treeBase);
 
     x = atx;
     y = aty;
@@ -34,7 +66,6 @@ class Tree extends Interactive {
 
       space = null;
       visible = false;
-      //parent.removeChild(this);
 
       Interactive.current = null;
     }
