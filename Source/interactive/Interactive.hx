@@ -1,6 +1,8 @@
 package interactive;
 
 import openfl.events.MouseEvent;
+import openfl.media.Sound;
+import openfl.Assets;
 
 import nape.phys.BodyType;
 
@@ -16,9 +18,13 @@ class Interactive extends PhysicsObject  {
   public var collectable:Bool = false;
   public static var current:Interactive = null;
   public var id: String;
+  private static var pickupSound:Sound = null;
 
   public function new() {
     super(BodyType.DYNAMIC);
+
+    if(pickupSound == null)
+      pickupSound = Assets.getSound('sfx/pickup.wav');
 
     buttonMode = true;
     enabled = false;
@@ -32,6 +38,7 @@ class Interactive extends PhysicsObject  {
       space = null;
       enabled = false;
       Inventory.instance.collect(id, 1);
+      pickupSound.play();
       Actuate.tween(this, 1, {
         alpha: 0,
         scaleX: 0,

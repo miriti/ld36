@@ -28,10 +28,24 @@ class Craft extends Sprite {
       }
     }
 
-    var doneButton = new Button('btn-done');
-    doneButton.x = bitmap.width - doneButton.width/2 - 15;
-    doneButton.y = bitmap.height - doneButton.height/2 - 15;
+    var doneButton = new Button('btn-close');
+    doneButton.x = bitmap.width - doneButton.width/2 - 10;
+    doneButton.y = bitmap.height - doneButton.height/2 - 10;
     addChild(doneButton);
+
+    var craftButton = new Button('btn-craft-action');
+    craftButton.x = 332 + craftButton.width / 2;
+    craftButton.y = doneButton.y;
+    addChild(craftButton);
+
+    craftButton.addEventListener('action', function(e:Event) {
+
+      var counts:Map<String, Int> = new Map<String,Int>();
+
+      for(slot in slots) {
+        slot.putIcon(null);
+      }
+    });
 
     doneButton.addEventListener('action', function(e:Event) {
       for(slot in slots) {
@@ -43,7 +57,7 @@ class Craft extends Sprite {
   }
 
   public function craft() : Void {
-    
+
   }
 
 }

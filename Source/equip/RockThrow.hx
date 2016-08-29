@@ -1,33 +1,29 @@
 package equip;
 
-import openfl.display.Bitmap;
 import openfl.display.Sprite;
-import openfl.Assets;
 
 import hud.Inventory;
 
 class RockThrow extends ThrowEquipment {
-  var bitmap:Bitmap;
-  var container:Sprite;
 
   public function new() {
     super();
 
-    bitmap = new Bitmap(Assets.getBitmapData("assets/rock.png"));
-    bitmap.x = 30;
-    bitmap.y = -bitmap.height / 2;
-
-    container = new Sprite();
-    container.addChild(bitmap);
-
-    var newDisplay = new Sprite();
-    newDisplay.addChild(container);
-
-    display = newDisplay;
+    display = new Sprite();
   }
 
   override public function generateProjectile(): PhysicsObject {
     return new ThrowableRock();
+  }
+
+  override public function endAction(): Void {
+    super.endAction();
+
+    Inventory.instance.collect('rock', -1);
+
+    if(Inventory.instance.icons['rock'].count == 0) {
+      mob.equipment = null;
+    }
   }
 
 }

@@ -2,7 +2,9 @@ package equip;
 
 import openfl.display.Bitmap;
 import openfl.display.Sprite;
+import openfl.media.Sound;
 import openfl.Assets;
+
 import motion.Actuate;
 
 import interactive.Interactive;
@@ -11,9 +13,13 @@ class BasicTool extends Equipment  {
 
   var bitmap:Bitmap;
   var container:Sprite;
+  private static var sound:Sound = null;
 
   public function new() {
     super();
+
+    if(sound == null)
+      sound = Assets.getSound('sfx/hit.wav');
 
     bitmap = new Bitmap(Assets.getBitmapData("assets/basic-tool.png"));
     bitmap.x = -bitmap.width/2;
@@ -36,6 +42,7 @@ class BasicTool extends Equipment  {
           var bounds = Interactive.current.getBounds(mob.parent);
 
           if(Math.min(Math.abs(bounds.x - mob.x), Math.abs((bounds.x+bounds.width) - mob.x)) <= 100) {
+            sound.play();
             Interactive.current.hit(this);
           }
         }

@@ -50,12 +50,15 @@ class InventoryIcon extends Button {
     addChild(countText);
 
     addEventListener('action', function(e: Event) {
-      if(inventoryItem != null) {
-        if(inventoryItem.equipment != null) {
-          Player.getInstance().equipment = inventoryItem.equipment;
+      if(count > 0) {
+        if(inventoryItem != null) {
+          if(inventoryItem.equipment != null) {
+            Player.getInstance().equipment = inventoryItem.equipment;
+          }
         }
+
+        Inventory.instance.selected = this;
       }
-      Inventory.instance.selected = this;
     });
   }
 

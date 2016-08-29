@@ -24,7 +24,7 @@ class Rocks extends Interactive {
       for(i in 0...Std.int(width/20)) {
         for(j in 0...Std.int(height/20)) {
           var rock:Rock = new Rock();
-          rock.position = Vec2.get(10 + x + i * 20, 10 + y + j * 20);
+          rock.position = Vec2.get(10 + x + i * (20 * Math.random()), 10 + y + j * (20 * Math.random()));
           parent.addChild(rock);
           rock.space = space;
         }
