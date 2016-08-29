@@ -23,7 +23,7 @@ class GameWorld extends GameObject {
   }
 
   override function update(delta:Float) {
-    space.step(delta);
+    space.step(1/60);
   }
 
 }

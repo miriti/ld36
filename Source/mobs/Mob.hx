@@ -123,7 +123,7 @@ class Mob extends PhysicsObject {
 
   public function jump() : Void {
     if (!inJump) {
-      body.velocity.y = -300;
+      body.velocity.y = -400;
       inJump = true;
     }
   }

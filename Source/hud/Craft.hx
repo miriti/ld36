@@ -39,11 +39,22 @@ class Craft extends Sprite {
     addChild(craftButton);
 
     craftButton.addEventListener('action', function(e:Event) {
-
       var counts:Map<String, Int> = new Map<String,Int>();
 
-      for(slot in slots) {
+      for (slot in slots) {
+        var item = slot.containsIcon.item;
+        
+        if(counts.exists(item)) {
+            counts[item]++;
+        } else {
+            counts[item] = 1;
+        }
+        
         slot.putIcon(null);
+      }
+      
+      if((counts['wood'] == 3) && (counts['rock'] == 1)) {
+        trace( "spear crafted" );
       }
     });
 

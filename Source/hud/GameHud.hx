@@ -3,8 +3,6 @@ package hud;
 import openfl.display.Sprite;
 import openfl.events.Event;
 
-import openfl.events.MouseEvent;
-
 import motion.Actuate;
 
 class GameHud extends Sprite {
@@ -20,7 +18,7 @@ class GameHud extends Sprite {
 
     btnCraft = new Button('btn-craft');
     addChild(btnCraft);
-    btnCraft.addEventListener('action', function(e:MouseEvent) {
+    btnCraft.addEventListener('action', function(e:Event) {
       showCraft();
     });
 
