@@ -15,9 +15,9 @@ class MainMenu extends Sprite  {
   public function new() {
     super();
 
-    gameLogo = new Bitmap(Assets.getBitmapData('assets/game_logo.png'));
+    gameLogo = new Bitmap(Assets.getBitmapData('assets/game-logo.png'));
     playButton = new Sprite();
-    playButton.addChild(new Bitmap(Assets.getBitmapData('assets/btn_play.png')));
+    playButton.addChild(new Bitmap(Assets.getBitmapData('assets/btn-play.png')));
     playButton.buttonMode = true;
 
     playButton.addEventListener(MouseEvent.CLICK, function(e:MouseEvent) {

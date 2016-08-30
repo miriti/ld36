@@ -48,4 +48,8 @@ class Spear extends ThrowEquipment {
     }
   }
 
+  override public function generateProjectile(): PhysicsObject {
+    return new ThrowableSpear();
+  }
+
 }

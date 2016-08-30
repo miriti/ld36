@@ -28,6 +28,7 @@ class ThrowEquipment extends Equipment {
 
     if (p != null) {
       p.body.velocity = aim.mul(arrow.power * 10);
+      p.body.rotation = aim.angle;
       p.space = mob.space;
       p.position = mob.position.add(aim.normalise().mul(50));
       mob.parent.addChild(p);

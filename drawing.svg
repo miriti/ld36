@@ -147,11 +147,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.6568542"
-     inkscape:cx="527.54806"
-     inkscape:cy="216.89584"
+     inkscape:zoom="1"
+     inkscape:cx="391.71215"
+     inkscape:cy="332.87674"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="true"
      units="px"
      inkscape:window-width="1920"
@@ -185,7 +185,8 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-452.36203)"
-     style="display:inline">
+     style="display:none"
+     sodipodi:insensitive="true">
     <rect
        style="fill:#c5e4e4;fill-opacity:1;stroke:#000000;stroke-opacity:1"
        id="rect4167"
@@ -1278,19 +1279,29 @@
            ry="5.3916893" />
       </g>
     </g>
+    <path
+       style="fill:#803300;fill-opacity:1;stroke:none;stroke-opacity:1"
+       d="m 90,480 0,30 17.25,0 12.75,-15 340,0 12.75,15 17.25,0 0,-30 z"
+       transform="translate(0,452.36203)"
+       id="rect4728"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccc"
+       inkscape:export-filename="/home/michael/ld36/Assets/bridge.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="menu"
-     sodipodi:insensitive="true"
-     style="display:none">
+     style="display:inline">
     <flowRoot
        xml:space="preserve"
        id="flowRoot4170"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:90px;line-height:125%;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#008000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"><flowRegion
+       inkscape:export-ydpi="90"
+       inkscape:export-filename="/home/michael/ld36/Assets/game-logo.png"><flowRegion
          id="flowRegion4172"><rect
            id="rect4174"
            width="730"
@@ -1298,30 +1309,37 @@
            x="80"
            y="20"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:90px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;text-align:center;text-anchor:middle;fill:#008000" /></flowRegion><flowPara
-         id="flowPara4176">Game Name</flowPara></flowRoot>    <rect
-       style="fill:#c6f8c4;fill-opacity:1;stroke:#000000;stroke-opacity:1"
-       id="rect4184"
-       width="160"
-       height="70"
-       x="340"
-       y="350"
-       rx="10"
-       ry="10"
+         id="flowPara4176">Caveman's Day</flowPara></flowRoot>    <g
+       id="g4737"
+       inkscape:export-filename="/home/michael/ld36/Assets/btn-play.png"
        inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="376.91406"
-       y="396.03516"
-       id="text4178"
-       sodipodi:linespacing="125%"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"><tspan
-         sodipodi:role="line"
-         id="tspan4180"
-         x="376.91406"
-         y="396.03516">Play</tspan></text>
+       inkscape:export-ydpi="90">
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         ry="10"
+         rx="10"
+         y="350"
+         x="340"
+         height="70"
+         width="160"
+         id="rect4184"
+         style="fill:#88aa00;fill-opacity:1;stroke:none;stroke-opacity:1" />
+      <text
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         sodipodi:linespacing="125%"
+         id="text4178"
+         y="399.70001"
+         x="379.56525"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#f9f9f9;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, '"
+           y="399.70001"
+           x="379.56525"
+           id="tspan4180"
+           sodipodi:role="line">Play</tspan></text>
+    </g>
   </g>
   <g
      inkscape:groupmode="layer"
@@ -1535,27 +1553,64 @@
        inkscape:export-filename="/home/michael/ld36/Assets/btn-done.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90">
-      <rect
-         rx="3.6854408"
-         ry="4.7469745"
-         y="525"
-         x="677.72974"
-         height="29.999998"
-         width="87.270294"
-         id="rect4948"
-         style="fill:#88aa00;fill-opacity:1;stroke:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <text
-         sodipodi:linespacing="125%"
-         id="text4950"
-         y="549.46002"
-         x="693.98199"
-         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#f2f2f2;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:27.5px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';fill:#f2f2f2"
-           y="549.46002"
-           x="693.98199"
-           id="tspan4952"
-           sodipodi:role="line">Done</tspan></text>
+      <g
+         id="g4710"
+         inkscape:export-filename="/home/michael/ld36/Assets/btn-close.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90">
+        <rect
+           style="fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect4948"
+           width="87.270294"
+           height="29.999998"
+           x="677.72974"
+           y="525"
+           ry="4.7469745"
+           rx="3.6854408" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#f2f2f2;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="694.44751"
+           y="550.46375"
+           id="text4950"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan4952"
+             x="694.44751"
+             y="550.46375"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:27.5px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';fill:#f2f2f2">Close</tspan></text>
+      </g>
+      <g
+         id="g4715"
+         transform="translate(-153.53238,0)"
+         inkscape:export-filename="/home/michael/ld36/Assets/btn-craft-action.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90">
+        <g
+           id="g4723">
+          <rect
+             style="fill:#88aa00;fill-opacity:1;stroke:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             id="rect4717"
+             width="87.270294"
+             height="29.999998"
+             x="677.72974"
+             y="525"
+             ry="4.7469745"
+             rx="3.6854408" />
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#f2f2f2;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             x="695.48071"
+             y="550.46375"
+             id="text4719"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan4721"
+               x="695.48071"
+               y="550.46375"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:27.5px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';fill:#f2f2f2">Craft</tspan></text>
+        </g>
+      </g>
     </g>
   </g>
   <g
@@ -1566,7 +1621,7 @@
      sodipodi:insensitive="true">
     <g
        id="g5230"
-       transform="matrix(0.63492063,0,0,0.63492063,58.864928,208.64281)"
+       transform="matrix(0.63492063,0,0,0.63492063,60.553572,208.64281)"
        inkscape:export-filename="/home/michael/ld36/Assets/icon-wood.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90">
@@ -1841,7 +1896,7 @@
     </g>
     <g
        id="g5277"
-       transform="matrix(0.63492063,0,0,0.63492063,63.277468,208.64281)"
+       transform="matrix(0.63492063,0,0,0.63492063,66.654757,208.64281)"
        inkscape:export-filename="/home/michael/ld36/Assets/icon-rock.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90">
@@ -1879,7 +1934,8 @@
        id="g5542"
        inkscape:export-filename="/home/michael/ld36/Assets/icon-basic-tool.png"
        inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90">
+       inkscape:export-ydpi="90"
+       transform="translate(0,1.2075457e-6)">
       <rect
          style="fill:#f2f2f2;fill-opacity:1;stroke:#484848;stroke-width:1.90476191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="rect5377"
@@ -1946,7 +2002,7 @@
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
        inkscape:export-filename="/home/michael/ld36/Assets/icon-wood-lg.png"
-       transform="matrix(1.4285714,0,0,1.4285714,107.54763,-308.92859)"
+       transform="matrix(1.4285714,0,0,1.4285714,109.58929,-308.92859)"
        id="g5552">
       <rect
          style="fill:#f2f2f2;fill-opacity:1;stroke:#484848;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -2221,7 +2277,7 @@
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
        inkscape:export-filename="/home/michael/ld36/Assets/icon-rock-lg.png"
-       transform="matrix(1.4285714,0,0,1.4285714,109.45241,-308.92859)"
+       transform="matrix(1.4285714,0,0,1.4285714,113.53572,-308.92859)"
        id="g5642">
       <rect
          rx="10"
@@ -2322,7 +2378,8 @@
       </g>
     </g>
     <g
-       id="g4504">
+       id="g4504"
+       transform="translate(6.125,0)">
       <rect
          style="fill:#f2f2f2;fill-opacity:1;stroke:#484848;stroke-width:4.28571415;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="rect4429"
@@ -2373,7 +2430,7 @@
     </g>
     <g
        id="g4513"
-       transform="matrix(0.44444444,0,0,0.44444444,18.19798,345.94441)">
+       transform="matrix(0.44444444,0,0,0.44444444,23.263898,345.94441)">
       <rect
          rx="14.285714"
          y="419.64282"
@@ -2420,6 +2477,81 @@
            id="path4527"
            d="m 160.50334,858.47414 3.6743,2.07494 c 1.71871,-0.25814 2.29143,-1.09337 5.83568,-0.43224 2.14606,1.04778 4.28134,3.42634 4.54257,5.39495 -3.11609,-1.98001 -3.94869,0.49071 -6.53106,-0.55352 -2.00447,-0.83968 -3.31235,-2.2872 -3.84719,-4.40919"
            style="fill:#88aa00;fill-rule:evenodd;stroke:#88aa00;stroke-width:1.17033303px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      </g>
+    </g>
+    <g
+       id="g4691"
+       inkscape:export-filename="/home/michael/ld36/Assets/icon-bridge-lg.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         rx="14.285714"
+         y="419.64282"
+         x="477.14285"
+         height="85.714279"
+         width="85.714287"
+         id="rect4650"
+         style="fill:#f2f2f2;fill-opacity:1;stroke:#484848;stroke-width:4.28571415;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <g
+         transform="translate(1.0720215,-14.367834)"
+         id="g4686">
+        <rect
+           y="457.32675"
+           x="482.68875"
+           height="13.881939"
+           width="72.478447"
+           id="rect4673"
+           style="fill:#803300;fill-opacity:1;stroke:none;stroke-opacity:1" />
+        <path
+           style="fill:#803300;fill-opacity:1;stroke:none;stroke-opacity:1"
+           d="m 487.90369,468.83168 10.6066,0 -1.59099,27.57716 -7.42462,0 z"
+           id="rect4679"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc" />
+        <path
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path4684"
+           d="m 539.34571,468.83168 10.6066,0 -1.59099,27.57716 -7.42462,0 z"
+           style="fill:#803300;fill-opacity:1;stroke:none;stroke-opacity:1" />
+      </g>
+    </g>
+    <g
+       id="g4698"
+       transform="matrix(0.44444444,0,0,0.44444444,24.88889,345.94441)"
+       inkscape:export-filename="/home/michael/ld36/Assets/icon-bridge.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         style="fill:#f2f2f2;fill-opacity:1;stroke:#484848;stroke-width:4.28571415;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4700"
+         width="85.714287"
+         height="85.714279"
+         x="477.14285"
+         y="419.64282"
+         rx="14.285714" />
+      <g
+         id="g4702"
+         transform="translate(1.0720215,-14.367834)">
+        <rect
+           style="fill:#803300;fill-opacity:1;stroke:none;stroke-opacity:1"
+           id="rect4704"
+           width="72.478447"
+           height="13.881939"
+           x="482.68875"
+           y="457.32675" />
+        <path
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path4706"
+           d="m 487.90369,468.83168 10.6066,0 -1.59099,27.57716 -7.42462,0 z"
+           style="fill:#803300;fill-opacity:1;stroke:none;stroke-opacity:1" />
+        <path
+           style="fill:#803300;fill-opacity:1;stroke:none;stroke-opacity:1"
+           d="m 539.34571,468.83168 10.6066,0 -1.59099,27.57716 -7.42462,0 z"
+           id="path4708"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc" />
       </g>
     </g>
   </g>

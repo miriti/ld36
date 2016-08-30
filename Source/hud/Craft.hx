@@ -42,20 +42,39 @@ class Craft extends Sprite {
       var counts:Map<String, Int> = new Map<String,Int>();
 
       for (slot in slots) {
-        var item = slot.containsIcon.item;
-        
-        if(counts.exists(item)) {
-            counts[item]++;
-        } else {
-            counts[item] = 1;
+        if(slot.containsIcon != null) {
+          var item = slot.containsIcon.item;
+
+          if(counts.exists(item)) {
+              counts[item] = counts[item] + 1;
+          } else {
+              counts[item] = 1;
+          }
         }
-        
+
         slot.putIcon(null);
       }
-      
-      if((counts['wood'] == 3) && (counts['rock'] == 1)) {
-        trace( "spear crafted" );
+
+      if(counts.exists('wood')) {
+        if(counts.exists('rock')) {
+          if((counts['wood'] == 3) && (counts['rock'] == 1)) {
+            GameSounds.getInstance().craft.play();
+
+            Inventory.instance.collect('wood', -3);
+            Inventory.instance.collect('rock', -1);
+            Inventory.instance.collect('spear', 1);
+          }
+        } else {
+          if(counts['wood'] == 9) {
+            GameSounds.getInstance().craft.play();
+
+            Inventory.instance.collect('bridge', 1);
+            Inventory.instance.collect('wood', -9);
+          }
+        }
       }
+
+      Inventory.instance.selected = null;
     });
 
     doneButton.addEventListener('action', function(e:Event) {

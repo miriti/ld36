@@ -1,1 +1,1 @@
-cmd: openfl test flash
+cmd: openfl test linux

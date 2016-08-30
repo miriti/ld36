@@ -30,7 +30,7 @@ class Main extends Sprite {
 			var music:Sound = Assets.getSound("music/theme.ogg");
 			#end
 
-			music.play();
+			music.play(0, 99999);
 
 			gameMain = new GameMain();
 			addChild(gameMain);

@@ -8,11 +8,15 @@ import nape.space.Space;
 
 class GameWorld extends GameObject {
 
+  public static var instance:GameWorld;
+
   var gameMap:GameMap;
-  var space:Space;
+  public var space:Space;
 
   public function new() {
     super();
+
+    instance = this;
 
     var gravity = Vec2.weak(0, 600);
     space = new Space(gravity);
